@@ -1,8 +1,8 @@
 import { CollectionConfig } from 'payload/types';
 
 import { coloredSubhead } from '../../fields/coloredSubhead';
-import { emoji } from '../../fields/emoji';
 import { heading, headingAsTitle } from '../../fields/heading';
+import { icon } from '../../fields/icon';
 import { requiredField } from '../../utils/functions';
 
 const Heroes: CollectionConfig = {
@@ -13,9 +13,9 @@ const Heroes: CollectionConfig = {
     },
     admin: {
         ...headingAsTitle,
-        defaultColumns: ['emoji', 'heading', 'updatedAt']
+        defaultColumns: ['icon', 'heading', 'updatedAt']
     },
-    fields: [...emoji, ...requiredField(heading('h1')), ...coloredSubhead]
+    fields: [...icon, ...requiredField(heading('h1')), ...coloredSubhead]
 };
 
 export default Heroes;

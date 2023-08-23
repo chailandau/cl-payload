@@ -2,11 +2,11 @@ import { Field } from 'payload/types';
 
 import { ThumbnailCell } from '../custom/ThumbnailCell';
 
-export const emoji = [
+export const icon = [
     {
-        name: 'emoji',
+        name: 'icon',
         type: 'upload',
-        relationTo: 'emojis',
+        relationTo: 'icons',
         admin: {
             components: {
                 Cell: ThumbnailCell

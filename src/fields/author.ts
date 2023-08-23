@@ -4,6 +4,14 @@ export const author = [
     {
         name: 'author',
         type: 'text'
+    },
+    {
+        name: 'jobTitle',
+        type: 'text'
+    },
+    {
+        name: 'company',
+        type: 'text'
     }
 ] as Field[];
 
