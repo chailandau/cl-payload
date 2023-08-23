@@ -12,8 +12,13 @@ const Testimonials: CollectionConfig = {
     },
     fields: [
         ...requiredField(author),
+        {
+            name: 'linkedin',
+            label: 'LinkedIn',
+            type: 'text'
+        },
         ...requiredField(image),
-        ...requiredField(testimonial)
+        ...testimonial
     ]
 };
 

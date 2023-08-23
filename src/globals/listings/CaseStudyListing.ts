@@ -1,11 +1,11 @@
 import { GlobalConfig } from 'payload/types';
 
-import { emoji } from '../../fields/emoji';
+import { icon } from '../../fields/icon';
 import { title } from '../../fields/title';
 
 const CaseStudyListing: GlobalConfig = {
     slug: 'case-study-listing',
-    fields: [...title, ...emoji]
+    fields: [...title, ...icon]
 };
 
 export default CaseStudyListing;

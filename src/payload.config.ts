@@ -6,12 +6,14 @@ import { CollectionConfig, GlobalConfig } from 'payload/types';
 import Users from './collections/admin/Users';
 import Projects from './collections/content/Projects';
 import Testimonials from './collections/content/Testimonials';
-import { Emojis } from './collections/media/Emojis';
+import Tools from './collections/content/Tools';
+import { Icons } from './collections/media/Icons';
 import Images from './collections/media/Images';
 import Heroes from './collections/sections/Heroes';
 import Pages from './collections/templates/Pages';
 import CaseStudyListing from './globals/listings/CaseStudyListing';
 import TestimonialListing from './globals/listings/TestimonialListing';
+import ToolboxListing from './globals/listings/ToolboxListing';
 import { createGroup } from './utils/createGroups';
 
 export default buildConfig({
@@ -23,15 +25,15 @@ export default buildConfig({
         ...(createGroup([Pages], 'Templates') as CollectionConfig[]),
         ...(createGroup([Heroes], 'Sections') as CollectionConfig[]),
         ...(createGroup(
-            [Projects, Testimonials],
+            [Projects, Testimonials, Tools],
             'Content'
         ) as CollectionConfig[]),
-        ...(createGroup([Emojis, Images], 'Media') as CollectionConfig[]),
+        ...(createGroup([Icons, Images], 'Media') as CollectionConfig[]),
         ...(createGroup([Users], 'Admin') as CollectionConfig[])
     ],
     globals: [
         ...(createGroup(
-            [CaseStudyListing, TestimonialListing],
+            [CaseStudyListing, ToolboxListing, TestimonialListing],
             'Listings'
         ) as GlobalConfig[])
     ],

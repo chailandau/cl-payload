@@ -2,8 +2,8 @@ import { CollectionConfig } from 'payload/types';
 
 import { setMaxFileSize } from '../../utils/setMaxFileSize';
 
-export const Emojis: CollectionConfig = {
-    slug: 'emojis',
+export const Icons: CollectionConfig = {
+    slug: 'icons',
     admin: {
         defaultColumns: [
             'filename',
@@ -15,8 +15,8 @@ export const Emojis: CollectionConfig = {
         ]
     },
     upload: {
-        staticURL: '/emojis',
-        staticDir: 'emojis',
+        staticURL: '/icons',
+        staticDir: 'icons',
         imageSizes: [
             {
                 name: 'thumbnail',
