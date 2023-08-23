@@ -14,6 +14,7 @@ import Pages from './collections/templates/Pages';
 import CaseStudyListing from './globals/listings/CaseStudyListing';
 import TestimonialListing from './globals/listings/TestimonialListing';
 import ToolboxListing from './globals/listings/ToolboxListing';
+import Nav from './globals/Nav';
 import { createGroup } from './utils/createGroups';
 
 export default buildConfig({
@@ -32,6 +33,7 @@ export default buildConfig({
         ...(createGroup([Users], 'Admin') as CollectionConfig[])
     ],
     globals: [
+        ...(createGroup([Nav], 'Global') as GlobalConfig[]),
         ...(createGroup(
             [CaseStudyListing, ToolboxListing, TestimonialListing],
             'Listings'
