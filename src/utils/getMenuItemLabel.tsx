@@ -2,8 +2,6 @@ import axios from 'axios';
 import { useConfig } from 'payload/components/utilities';
 import React, { useEffect, useState } from 'react';
 
-import { capitalizeWord } from './functions';
-
 export const getMenuItemLabel = (defaultTitle: string) => ({
     RowLabel: ({ data, index }) => {
         const [title, setTitle] = useState(null);
@@ -14,44 +12,26 @@ export const getMenuItemLabel = (defaultTitle: string) => ({
         )}`;
 
         const titleWithType = (itemTitle: string) => (
-            <>
-                <strong>{itemTitle}</strong>
-                &nbsp;|&nbsp;
-                {capitalizeWord(data?.linkType)}
-            </>
+            <strong>{itemTitle}</strong>
         );
 
         const { serverURL } = useConfig();
 
         useEffect(() => {
-            if (data?.linkType === 'internal') {
-                if (data?.internalLink) {
-                    data?.overridePageName
-                        ? setTitle(
-                              titleWithType(
-                                  data?.internalCustomLabel || fallbackTitle
-                              )
-                          )
-                        : axios
-                              .get(
-                                  `${serverURL}/api/pages/${data.internalLink}`
-                              )
-                              .then((res) => {
-                                  setTitle(titleWithType(res?.data?.title));
-                              });
-                } else {
-                    setTitle(titleWithType(fallbackTitle));
-                }
+            if (data?.page) {
+                data?.overridePageName
+                    ? setTitle(
+                          titleWithType(data?.customLabel || fallbackTitle)
+                      )
+                    : axios
+                          .get(`${serverURL}/api/pages/${data.page}`)
+                          .then((res) => {
+                              setTitle(titleWithType(res?.data?.title));
+                          });
             } else {
-                return setTitle(titleWithType(data?.label || fallbackTitle));
+                return setTitle(titleWithType(fallbackTitle));
             }
-        }, [
-            data?.internalLink,
-            data?.label,
-            data?.linkType,
-            data?.overridePageName,
-            data?.internalCustomLabel
-        ]);
+        }, [data?.page, data?.overridePageName, data?.customLabel]);
 
         return title;
     }
