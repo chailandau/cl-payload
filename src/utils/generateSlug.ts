@@ -18,7 +18,7 @@ const formatSlug = (str: string): string =>
  * @returns {object} - The modified data object with the generated slug.
  */
 export const generateSlug =
-    (titleField: string, slugField: string = 'slug'): object =>
+    (titleField: string, slugField: string = 'slug') =>
     ({ data }) => {
         const emptySlug =
             typeof data[slugField] === 'undefined' || data[slugField] === '';
