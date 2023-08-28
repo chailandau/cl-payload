@@ -7,7 +7,9 @@ export const coloredSubhead = [
         admin: {
             className: 'colored-subhead',
             elements: [],
-            leaves: ['bold']
+            leaves: ['bold'],
+            description:
+                'Use text bolding to designate colored subhead text. Styling will be taken care of on the frontend.'
         }
     }
 ] as Field[];

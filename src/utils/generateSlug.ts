@@ -1,13 +1,24 @@
-const formatSlug = (str: string) =>
+/**
+ * Formats a string into a slug by converting it to lowercase and replacing  all non-alphanumeric characters with hyphens. Also removes leading and trailing hyphens.
+ *
+ * @param {string} str - The string to be formatted into a slug.
+ * @return {string} - The formatted slug.
+ */
+const formatSlug = (str: string): string =>
     str
         .toLowerCase()
-        // Replace underscores, non-alphanumeric characters, and consecutive dashes with a single dash
         .replaceAll(/[_\W]+|-+/g, '-')
-        // Remove dashes from the beginning and end of the slug
         .replaceAll(/^-+|-+$/g, '');
 
+/**
+ * Generates a slug based on the provided title field and assigns it to the slug field of the data object.
+ *
+ * @param {string} titleField - The field in the data object that contains the title.
+ * @param {string} [slugField='slug'] - The field in the data object where the slug will be assigned. Defaults to 'slug'.
+ * @returns {object} - The modified data object with the generated slug.
+ */
 export const generateSlug =
-    (titleField: string, slugField = 'slug') =>
+    (titleField: string, slugField: string = 'slug'): object =>
     ({ data }) => {
         const emptySlug =
             typeof data[slugField] === 'undefined' || data[slugField] === '';
