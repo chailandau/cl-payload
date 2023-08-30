@@ -14,6 +14,9 @@ const Images: CollectionConfig = {
             'updatedAt'
         ]
     },
+    access: {
+        read: () => true
+    },
     upload: {
         staticURL: '/images',
         staticDir: 'images',
