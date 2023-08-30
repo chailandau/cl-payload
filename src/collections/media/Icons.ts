@@ -14,6 +14,9 @@ export const Icons: CollectionConfig = {
             'updatedAt'
         ]
     },
+    access: {
+        read: () => true
+    },
     upload: {
         staticURL: '/icons',
         staticDir: 'icons',
