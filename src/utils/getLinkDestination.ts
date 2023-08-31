@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useConfig } from 'payload/components/utilities';
-// import { CTA } from 'payload/generated-types';
+import { Cta } from 'payload/generated-types';
 import { useEffect, useState } from 'react';
 
 /**
@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
  * @param {Object} linkRowData - Data object representing a row.
  * @return {string} Link destination.
  */
-export const getLinkDestination = (linkRowData): string => {
+export const getLinkDestination = (linkRowData: Partial<Cta>): string => {
     const [linkDestination, setLinkDestination] = useState('');
 
     const { serverURL } = useConfig();
