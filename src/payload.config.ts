@@ -4,6 +4,7 @@ import { buildConfig } from 'payload/config';
 import { CollectionConfig, GlobalConfig } from 'payload/types';
 
 import Users from './collections/admin/Users';
+import CTA from './collections/content/CTAs';
 import Projects from './collections/content/Projects';
 import Testimonials from './collections/content/Testimonials';
 import Tools from './collections/content/Tools';
@@ -26,7 +27,7 @@ export default buildConfig({
         ...(createGroup([Pages], 'Templates') as CollectionConfig[]),
         ...(createGroup([Heroes], 'Sections') as CollectionConfig[]),
         ...(createGroup(
-            [Projects, Testimonials, Tools],
+            [CTA, Projects, Testimonials, Tools],
             'Content'
         ) as CollectionConfig[]),
         ...(createGroup([Icons, Images], 'Media') as CollectionConfig[]),
