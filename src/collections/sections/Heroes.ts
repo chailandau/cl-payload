@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 
 import { coloredSubhead } from '../../fields/coloredSubhead';
+import { cta } from '../../fields/cta';
 import { heading, headingAsTitle } from '../../fields/heading';
 import { icon } from '../../fields/icon';
 import { requiredField } from '../../utils/functions';
@@ -15,7 +16,12 @@ const Heroes: CollectionConfig = {
         ...headingAsTitle,
         defaultColumns: ['icon', 'heading', 'updatedAt']
     },
-    fields: [...icon, ...requiredField(heading('h1')), ...coloredSubhead]
+    fields: [
+        ...icon,
+        ...requiredField(heading('h1')),
+        ...coloredSubhead,
+        ...cta
+    ]
 };
 
 export default Heroes;
