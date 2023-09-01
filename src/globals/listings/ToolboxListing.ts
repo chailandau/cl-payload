@@ -9,6 +9,10 @@ const ToolboxListing: GlobalConfig = {
         ...title,
         ...icon,
         {
+            name: 'description',
+            type: 'textarea'
+        },
+        {
             name: 'tools',
             type: 'relationship',
             relationTo: 'tools',
