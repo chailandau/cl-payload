@@ -5,7 +5,16 @@ import { title } from '../../fields/title';
 
 const TestimonialListing: GlobalConfig = {
     slug: 'testimonial-listing',
-    fields: [...title, ...icon]
+    fields: [
+        ...title,
+        ...icon,
+        {
+            name: 'testimonials',
+            type: 'relationship',
+            relationTo: 'testimonials',
+            hasMany: true
+        }
+    ]
 };
 
 export default TestimonialListing;
