@@ -8,6 +8,10 @@ export const SingleUse: Block = {
             type: 'select',
             options: [
                 {
+                    label: 'About',
+                    value: 'about'
+                },
+                {
                     label: 'Case Study Listing',
                     value: 'case-study-listing'
                 },
