@@ -12,6 +12,7 @@ import { Icons } from './collections/media/Icons';
 import Images from './collections/media/Images';
 import Heroes from './collections/sections/Heroes';
 import Pages from './collections/templates/Pages';
+import About from './globals/About';
 import CaseStudyListing from './globals/listings/CaseStudyListing';
 import TestimonialListing from './globals/listings/TestimonialListing';
 import ToolboxListing from './globals/listings/ToolboxListing';
@@ -34,7 +35,7 @@ export default buildConfig({
         ...(createGroup([Users], 'Admin') as CollectionConfig[])
     ],
     globals: [
-        ...(createGroup([Nav], 'Global') as GlobalConfig[]),
+        ...(createGroup([About, Nav], 'Global') as GlobalConfig[]),
         ...(createGroup(
             [CaseStudyListing, ToolboxListing, TestimonialListing],
             'Listings'
