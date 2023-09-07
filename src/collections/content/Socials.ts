@@ -21,7 +21,7 @@ const Socials: CollectionConfig = {
                     'Input a valid URL. Example: "https://google.com/".'
             },
             validate: (val) => {
-                if (!isValidUrl(val)) {
+                if (!isValidUrl(val, { allowEmail: true })) {
                     return 'Please enter a valid URL.';
                 }
             }

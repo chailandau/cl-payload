@@ -35,21 +35,45 @@ export const requiredField = (fieldConfig: Field[]): Field[] => {
 
 /**
  * Validates if string is a valid http or https URL with a TLD.
+ * Accepts options object with `allowEmail` option
  *
  * @param {string} str - String to be validated as a URL.
- * @return {boolean} Returns true if the string is a valid URL, otherwise returns false.
+ * @param [options.allowEmail] - Allow email addresses.
+ * @returns true if the string is a valid URL, otherwise returns false.
  */
-export const isValidUrl = (str: string): boolean => {
+export const isValidUrl = (
+    str: string,
+    options?: { allowEmail: boolean }
+): boolean => {
+    const { allowEmail } = options;
+
     try {
         const url = new URL(str);
 
-        const originSplit = url.origin.split('.');
-        if (originSplit.length === 1 || originSplit[1] === '') {
-            return false;
-        }
+        const checkSplit = () => {
+            const originSplit = url.origin.split('.');
+            if (originSplit.length === 1 || originSplit[1] === '') {
+                return false;
+            }
+        };
+        if (allowEmail) {
+            if (url.protocol !== 'mailto:') {
+                checkSplit();
+            }
 
-        return url.protocol === 'http:' || url.protocol === 'https:';
+            return (
+                url.protocol === 'http:' ||
+                url.protocol === 'https:' ||
+                url.protocol === 'mailto:'
+            );
+        } else {
+            checkSplit();
+
+            return url.protocol === 'http:' || url.protocol === 'https:';
+        }
     } catch (err) {
+        console.error(err);
+
         return false;
     }
 };
