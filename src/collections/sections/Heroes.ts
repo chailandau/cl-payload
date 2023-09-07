@@ -28,8 +28,17 @@ const Heroes: CollectionConfig = {
             }
         },
         {
-            name: 'doodles',
-            type: 'checkbox'
+            type: 'row',
+            fields: [
+                {
+                    name: 'homepage',
+                    type: 'checkbox'
+                },
+                {
+                    name: 'doodles',
+                    type: 'checkbox'
+                }
+            ]
         },
         ...cta
     ]
