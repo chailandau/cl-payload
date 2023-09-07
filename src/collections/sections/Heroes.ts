@@ -20,6 +20,17 @@ const Heroes: CollectionConfig = {
         ...icon,
         ...requiredField(heading('h1')),
         ...coloredSubhead,
+        {
+            name: 'subhead',
+            type: 'textarea',
+            admin: {
+                description: 'Use for a regular subhead without colored words.'
+            }
+        },
+        {
+            name: 'doodles',
+            type: 'checkbox'
+        },
         ...cta
     ]
 };
