@@ -6,7 +6,8 @@ export const slug = [
         type: 'text',
         unique: true,
         admin: {
-            position: 'sidebar'
+            position: 'sidebar',
+            description: 'Full slug will be /projects/{slug}'
         }
     }
 ] as Field[];

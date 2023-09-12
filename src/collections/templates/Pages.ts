@@ -12,7 +12,7 @@ const Pages: CollectionConfig = {
         defaultColumns: ['title', 'slug', 'updatedAt']
     },
     hooks: {
-        beforeChange: [generateSlug({})]
+        beforeChange: [generateSlug()]
     },
     fields: [...title, ...slug, ...pageSections]
 };
