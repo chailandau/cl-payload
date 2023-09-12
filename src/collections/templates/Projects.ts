@@ -13,7 +13,7 @@ const Projects: CollectionConfig = {
         defaultColumns: ['title', 'slug', 'updatedAt']
     },
     hooks: {
-        beforeChange: [generateSlug({ category: 'projects' })]
+        beforeChange: [generateSlug()]
     },
     fields: [
         ...title,
