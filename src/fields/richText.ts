@@ -2,10 +2,11 @@ import { Field } from 'payload/types';
 
 export const richText = [
     {
-        name: 'content',
+        name: 'text',
         type: 'richText',
         admin: {
-            leaves: ['bold', 'italic', 'underline', 'strikethrough']
+            leaves: ['bold', 'italic'],
+            elements: ['ul', 'ol']
         }
     }
 ] as Field[];

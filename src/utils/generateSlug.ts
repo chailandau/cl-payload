@@ -17,14 +17,21 @@ const formatSlug = (str: string): string =>
  * @param {string} [slugField='slug'] - The field in the data object where the slug will be assigned. Defaults to 'slug'.
  * @returns {object} - The modified data object with the generated slug.
  */
+
+interface GenerateSlug {
+    /** Title field to generate slug from */
+    titleField?: string;
+    /** Slug field to assign generated slug to */
+    slugField?: string;
+    /** Optional category */
+    category?: string;
+}
 export const generateSlug =
-    (titleField: string, slugField: string = 'slug') =>
+    ({ titleField = 'title', slugField = 'slug', category }: GenerateSlug) =>
     ({ data }) => {
-        const emptySlug =
-            typeof data[slugField] === 'undefined' || data[slugField] === '';
-        const generatedSlug = emptySlug
-            ? formatSlug(data[titleField])
-            : formatSlug(data[slugField]);
+        const generatedSlug = category
+            ? `${category}/${formatSlug(data[titleField])}`
+            : formatSlug(data[titleField]);
 
         if (!(titleField in data)) {
             return data;

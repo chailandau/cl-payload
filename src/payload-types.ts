@@ -8,10 +8,12 @@
 
 export interface Config {
   collections: {
+    'case-studies': CaseStudy;
     pages: Page;
+    projects: Project;
     heroes: Hero;
     ctas: Cta;
-    projects: Project;
+    socials: Social;
     testimonials: Testimonial;
     tools: Tool;
     icons: Icon;
@@ -19,22 +21,117 @@ export interface Config {
     users: User;
   };
   globals: {
+    about: About;
     nav: Nav;
     'case-study-listing': CaseStudyListing;
     'toolbox-listing': ToolboxListing;
     'testimonial-listing': TestimonialListing;
   };
 }
+export interface CaseStudy {
+  id: string;
+  title?: string;
+  slug?: string;
+  project: string | Project;
+  intro?: {
+    heading?: string;
+    description?: string;
+    image?: string | Image;
+  };
+  projectSections?: (
+    | {
+        image?: string | Image;
+        id?: string;
+        blockName?: string;
+        blockType: 'imageBlock';
+      }
+    | {
+        heading?: string;
+        text?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'textBlock';
+      }
+  )[];
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Project {
+  id: string;
+  title?: string;
+  slug?: string;
+  intro?: {
+    description?: string;
+    image?: string | Image;
+  };
+  projectSections?: (
+    | {
+        image?: string | Image;
+        id?: string;
+        blockName?: string;
+        blockType: 'imageBlock';
+      }
+    | {
+        heading?: string;
+        text?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'textBlock';
+      }
+  )[];
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Image {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes?: {
+    thumbnail?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
+}
 export interface Page {
   id: string;
   title?: string;
   slug?: string;
-  sections?: {
-    hero?: string | Hero;
-    id?: string;
-    blockName?: string;
-    blockType: 'heroBlock';
-  }[];
+  pageSections?: (
+    | {
+        hero?: string | Hero;
+        id?: string;
+        blockName?: string;
+        blockType: 'heroBlock';
+      }
+    | {
+        singleUse?: 'about' | 'case-study-listing' | 'toolbox-listing' | 'testimonial-listing';
+        id?: string;
+        blockName?: string;
+        blockType: 'singleUseBlock';
+      }
+    | {
+        socials?: string[] | Social[];
+        id?: string;
+        blockName?: string;
+        blockType: 'socialsBlock';
+      }
+  )[];
   updatedAt: string;
   createdAt: string;
 }
@@ -46,6 +143,10 @@ export interface Hero {
   coloredSubhead?: {
     [k: string]: unknown;
   }[];
+  subhead?: string;
+  homepage?: boolean;
+  doodles?: boolean;
+  cta?: string | Cta;
   updatedAt: string;
   createdAt: string;
 }
@@ -81,41 +182,13 @@ export interface Cta {
   updatedAt: string;
   createdAt: string;
 }
-export interface Project {
+export interface Social {
   id: string;
-  title: string;
-  cardInfo?: {
-    snippet?: string;
-    image?: string | Image;
-  };
-  intro?: {
-    description?: string;
-    image?: string | Image;
-  };
+  icon: string | Icon;
+  label: string;
+  socialLink?: string;
   updatedAt: string;
   createdAt: string;
-}
-export interface Image {
-  id: string;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-  sizes?: {
-    thumbnail?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-  };
 }
 export interface Testimonial {
   id: string;
@@ -154,6 +227,24 @@ export interface User {
   lockUntil?: string;
   password?: string;
 }
+export interface About {
+  id: string;
+  image?: string | Image;
+  title?: string;
+  coloredSubhead?: {
+    [k: string]: unknown;
+  }[];
+  text?: {
+    [k: string]: unknown;
+  }[];
+  pets?: {
+    harvey?: string | Image;
+    athena?: string | Image;
+    warren?: string | Image;
+  };
+  updatedAt?: string;
+  createdAt?: string;
+}
 export interface Nav {
   id: string;
   menuItems?: {
@@ -177,6 +268,7 @@ export interface ToolboxListing {
   id: string;
   title?: string;
   icon?: string | Icon;
+  description?: string;
   tools?: string[] | Tool[];
   updatedAt?: string;
   createdAt?: string;
@@ -185,6 +277,7 @@ export interface TestimonialListing {
   id: string;
   title?: string;
   icon?: string | Icon;
+  testimonials?: string[] | Testimonial[];
   updatedAt?: string;
   createdAt?: string;
 }

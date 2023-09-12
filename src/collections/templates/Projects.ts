@@ -1,36 +1,29 @@
 import { CollectionConfig } from 'payload/types';
 
 import { image } from '../../fields/image';
+import { projectSections } from '../../fields/section';
+import { slug } from '../../fields/slug';
 import { title, titleAsTitle } from '../../fields/title';
-import { requiredField } from '../../utils/functions';
+import { generateSlug } from '../../utils/generateSlug';
 
 const Projects: CollectionConfig = {
     slug: 'projects',
     admin: {
-        ...titleAsTitle
+        ...titleAsTitle,
+        defaultColumns: ['title', 'slug', 'updatedAt']
+    },
+    hooks: {
+        beforeChange: [generateSlug({ category: 'projects' })]
     },
     fields: [
-        ...requiredField(title),
-        {
-            name: 'cardInfo',
-            type: 'group',
-            admin: {
-                description: 'Information for case study card'
-            },
-            fields: [
-                {
-                    name: 'snippet',
-                    type: 'textarea'
-                },
-                ...image
-            ]
-        },
+        ...title,
+        ...slug,
         {
             name: 'intro',
             type: 'group',
             admin: {
                 description:
-                    'Displays in intro section, above rest of case study'
+                    'Displays in intro section, above rest of the project'
             },
             fields: [
                 {
@@ -39,7 +32,8 @@ const Projects: CollectionConfig = {
                 },
                 ...image
             ]
-        }
+        },
+        ...projectSections
     ]
 };
 

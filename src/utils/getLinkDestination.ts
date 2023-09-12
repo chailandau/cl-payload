@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 /**
  * Retrieves `link` destination based on provided `rowData`.
  *
- * @param {Object} linkRowData - Data object representing a row.
- * @return {string} Link destination.
+ * @param linkRowData - Data object representing a row.
+ * @returns Link destination.
  */
 export const getLinkDestination = (linkRowData: Partial<Cta>): string => {
     const [linkDestination, setLinkDestination] = useState('');
