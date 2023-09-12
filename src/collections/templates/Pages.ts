@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 
-import { sections } from '../../fields/section';
+import { pageSections } from '../../fields/section';
 import { slug } from '../../fields/slug';
 import { title, titleAsTitle } from '../../fields/title';
 import { generateSlug } from '../../utils/generateSlug';
@@ -12,9 +12,9 @@ const Pages: CollectionConfig = {
         defaultColumns: ['title', 'slug', 'updatedAt']
     },
     hooks: {
-        beforeChange: [generateSlug('title')]
+        beforeChange: [generateSlug({})]
     },
-    fields: [...title, ...slug, ...sections]
+    fields: [...title, ...slug, ...pageSections]
 };
 
 export default Pages;

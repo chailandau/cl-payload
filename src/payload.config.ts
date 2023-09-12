@@ -5,14 +5,15 @@ import { CollectionConfig, GlobalConfig } from 'payload/types';
 
 import Users from './collections/admin/Users';
 import CTA from './collections/content/CTAs';
-import Projects from './collections/content/Projects';
 import Socials from './collections/content/Socials';
 import Testimonials from './collections/content/Testimonials';
 import Tools from './collections/content/Tools';
 import { Icons } from './collections/media/Icons';
 import Images from './collections/media/Images';
 import Heroes from './collections/sections/Heroes';
+import CaseStudies from './collections/templates/CaseStudies';
 import Pages from './collections/templates/Pages';
+import Projects from './collections/templates/Projects';
 import About from './globals/About';
 import CaseStudyListing from './globals/listings/CaseStudyListing';
 import TestimonialListing from './globals/listings/TestimonialListing';
@@ -26,10 +27,13 @@ export default buildConfig({
     },
     serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
     collections: [
-        ...(createGroup([Pages], 'Templates') as CollectionConfig[]),
+        ...(createGroup(
+            [CaseStudies, Pages, Projects],
+            'Templates'
+        ) as CollectionConfig[]),
         ...(createGroup([Heroes], 'Sections') as CollectionConfig[]),
         ...(createGroup(
-            [CTA, Projects, Socials, Testimonials, Tools],
+            [CTA, Socials, Testimonials, Tools],
             'Content'
         ) as CollectionConfig[]),
         ...(createGroup([Icons, Images], 'Media') as CollectionConfig[]),
