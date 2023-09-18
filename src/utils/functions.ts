@@ -43,9 +43,9 @@ export const requiredField = (fieldConfig: Field[]): Field[] => {
  */
 export const isValidUrl = (
     str: string,
-    options?: { allowEmail: boolean }
+    options?: { allowEmail?: boolean }
 ): boolean => {
-    const { allowEmail } = options;
+    const { allowEmail } = options || {};
 
     try {
         const url = new URL(str);
