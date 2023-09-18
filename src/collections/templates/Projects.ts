@@ -1,5 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 
+import { caseStudies } from '../../fields/caseStudy';
 import { image } from '../../fields/image';
 import { projectSections } from '../../fields/section';
 import { slug } from '../../fields/slug';
@@ -33,7 +34,8 @@ const Projects: CollectionConfig = {
                 ...image
             ]
         },
-        ...projectSections
+        ...projectSections,
+        ...caseStudies
     ]
 };
 
