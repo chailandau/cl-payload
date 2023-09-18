@@ -15,12 +15,13 @@ export const getLinkDestination = (linkRowData: Partial<Cta>): string => {
     const { serverURL } = useConfig();
 
     useEffect(() => {
-        linkRowData?.internalLink &&
-            axios
-                .get(`${serverURL}/api/pages/${linkRowData.internalLink}`)
-                .then((res) => {
-                    setLinkDestination(`${res.data.title} Page`);
-                });
+        linkRowData?.linkType === 'internal' && linkRowData?.internalLink
+            ? axios
+                  .get(`${serverURL}/api/pages/${linkRowData.internalLink}`)
+                  .then((res) => {
+                      setLinkDestination(`${res.data.title} Page`);
+                  })
+            : setLinkDestination(linkRowData?.externalLink || '');
     }, [linkRowData]);
 
     return linkDestination;

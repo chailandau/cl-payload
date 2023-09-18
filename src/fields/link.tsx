@@ -59,7 +59,7 @@ export const link = ({ hideInternalLabel = false }: LinkProps = {}) => {
                     siblingData?.linkType === 'external' ? true : false
             },
             validate: (val) => {
-                if (!isValidUrl(val)) {
+                if (!isValidUrl(val, { allowEmail: false })) {
                     return 'Please enter a valid URL.';
                 }
             }

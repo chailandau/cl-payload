@@ -6,7 +6,7 @@ import { LinkDestinationCell } from '../../custom/LinkDestinationCell';
 import { link } from '../../fields/link';
 
 const getPageTitle = async ({ data }: { data: Partial<Cta> }) => {
-    if (data?.internalLink) {
+    if (data?.linkType === 'internal') {
         const findPage = await payload.findByID({
             collection: 'pages',
             id: data.internalLink as string
