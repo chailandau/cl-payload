@@ -1,13 +1,14 @@
 import { Field } from 'payload/types';
 
-export const slug = [
-    {
-        name: 'slug',
-        type: 'text',
-        unique: true,
-        admin: {
-            position: 'sidebar',
-            description: 'Full slug will be /projects/{slug}'
+export const slug = ({ description }: { description?: string }) =>
+    [
+        {
+            name: 'slug',
+            type: 'text',
+            unique: true,
+            admin: {
+                position: 'sidebar',
+                description
+            }
         }
-    }
-] as Field[];
+    ] as Field[];

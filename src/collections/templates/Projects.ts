@@ -18,7 +18,7 @@ const Projects: CollectionConfig = {
     },
     fields: [
         ...title,
-        ...slug,
+        ...slug({ description: 'Full slug will be /projects/{slug}' }),
         {
             name: 'intro',
             type: 'group',
