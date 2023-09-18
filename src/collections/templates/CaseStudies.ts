@@ -1,5 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 
+import { manyCtas } from '../../fields/cta';
 import { image } from '../../fields/image';
 import { richText } from '../../fields/richText';
 import { caseStudySections } from '../../fields/section';
@@ -32,7 +33,8 @@ const CaseStudies: CollectionConfig = {
                     type: 'text'
                 },
                 ...richText,
-                ...image
+                ...image,
+                ...manyCtas
             ]
         },
         ...caseStudySections

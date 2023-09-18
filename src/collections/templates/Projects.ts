@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 
 import { caseStudies } from '../../fields/caseStudy';
+import { manyCtas } from '../../fields/cta';
 import { image } from '../../fields/image';
 import { projectSections } from '../../fields/section';
 import { slug } from '../../fields/slug';
@@ -31,7 +32,8 @@ const Projects: CollectionConfig = {
                     name: 'description',
                     type: 'textarea'
                 },
-                ...image
+                ...image,
+                ...manyCtas
             ]
         },
         ...projectSections,
