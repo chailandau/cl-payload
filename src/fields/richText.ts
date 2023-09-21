@@ -6,7 +6,7 @@ export const richText = [
         type: 'richText',
         admin: {
             leaves: ['bold', 'italic'],
-            elements: ['ul', 'ol']
+            elements: ['ul', 'ol', 'link']
         }
     }
 ] as Field[];
