@@ -14,3 +14,17 @@ export const image = [
         }
     }
 ] as Field[];
+
+export const ftImage = [
+    {
+        name: 'featuredImage',
+        type: 'upload',
+        relationTo: 'images',
+        admin: {
+            components: {
+                Cell: ThumbnailCell
+            },
+            description: 'Featured image for this project.'
+        }
+    }
+] as Field[];
