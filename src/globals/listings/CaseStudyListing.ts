@@ -5,7 +5,16 @@ import { title } from '../../fields/title';
 
 const CaseStudyListing: GlobalConfig = {
     slug: 'case-study-listing',
-    fields: [...title, ...icon]
+    fields: [
+        ...title,
+        ...icon,
+        {
+            name: 'caseStudies',
+            type: 'relationship',
+            relationTo: 'projects',
+            hasMany: true
+        }
+    ]
 };
 
 export default CaseStudyListing;
