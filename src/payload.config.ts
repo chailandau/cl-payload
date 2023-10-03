@@ -2,6 +2,7 @@ import path from 'path';
 
 import { buildConfig } from 'payload/config';
 import { CollectionConfig, GlobalConfig } from 'payload/types';
+import computeBlurhash from 'payload-blurhash-plugin';
 
 import Users from './collections/admin/Users';
 import CTA from './collections/content/CTAs';
@@ -26,6 +27,7 @@ export default buildConfig({
         css: path.resolve(__dirname, './styles/main.scss')
     },
     serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
+    plugins: [computeBlurhash()],
     collections: [
         ...(createGroup(
             [CaseStudies, Pages, Projects],
