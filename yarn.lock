@@ -1080,6 +1080,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@payloadcms/plugin-seo@^1.0.14-canary.0":
+  version "1.0.14-canary.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-1.0.14-canary.0.tgz#070b32206adc0e39096923d54641f980e54d0fe9"
+  integrity sha512-NXy4GzWU+vC1E0bm6hHOSQpRvwkGzRDdymz7qUWUgWn+/8EQe36fJ8CsKwu85UN+bjv2AVk6JIr3YBW+QFpchw==
+
 "@pkgr/utils@^2.3.1":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-2.4.2.tgz#9e638bbe9a6a6f165580dc943f138fd3309a2cbc"
