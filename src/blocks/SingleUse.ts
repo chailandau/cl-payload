@@ -1,5 +1,7 @@
 import type { Block } from 'payload/types';
 
+import { sectionId } from '../fields/sectionId';
+
 export const SingleUse: Block = {
     slug: 'singleUseBlock',
     fields: [
@@ -24,6 +26,7 @@ export const SingleUse: Block = {
                     value: 'testimonial-listing'
                 }
             ]
-        }
+        },
+        ...sectionId
     ]
 };

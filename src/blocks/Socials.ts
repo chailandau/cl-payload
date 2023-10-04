@@ -1,5 +1,7 @@
 import type { Block } from 'payload/types';
 
+import { sectionId } from '../fields/sectionId';
+
 export const Socials: Block = {
     slug: 'socialsBlock',
     fields: [
@@ -8,6 +10,7 @@ export const Socials: Block = {
             type: 'relationship',
             relationTo: 'socials',
             hasMany: true
-        }
+        },
+        ...sectionId
     ]
 };
