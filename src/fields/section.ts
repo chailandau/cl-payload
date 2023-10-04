@@ -14,18 +14,11 @@ export const pageSections = [
     }
 ] as Field[];
 
-export const projectSections = [
-    {
-        name: 'projectSections',
-        type: 'blocks',
-        blocks: [Image, Text]
-    }
-] as Field[];
-
-export const caseStudySections = [
-    {
-        name: 'caseStudySections',
-        type: 'blocks',
-        blocks: [Image, Text]
-    }
-] as Field[];
+export const projectSections = (name: string) =>
+    [
+        {
+            name,
+            type: 'blocks',
+            blocks: [Image, Text]
+        }
+    ] as Field[];

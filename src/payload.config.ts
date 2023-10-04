@@ -1,5 +1,6 @@
 import path from 'path';
 
+import seo from '@payloadcms/plugin-seo';
 import { buildConfig } from 'payload/config';
 import { CollectionConfig, GlobalConfig } from 'payload/types';
 import generateBase64 from 'payload-base64-plugin';
@@ -14,7 +15,6 @@ import Images from './collections/media/Images';
 import Heroes from './collections/sections/Heroes';
 import CaseStudies from './collections/templates/CaseStudies';
 import Pages from './collections/templates/Pages';
-import Projects from './collections/templates/Projects';
 import About from './globals/About';
 import CaseStudyListing from './globals/listings/CaseStudyListing';
 import TestimonialListing from './globals/listings/TestimonialListing';
@@ -27,10 +27,27 @@ export default buildConfig({
         css: path.resolve(__dirname, './styles/main.scss')
     },
     serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-    plugins: [generateBase64({ removeAlpha: false })],
+    plugins: [
+        generateBase64({ removeAlpha: false }),
+        seo({
+            collections: ['case-studies', 'pages'],
+            tabbedUI: true,
+            uploadsCollection: 'images',
+            generateURL: () => 'https://chailandau.com/',
+            fields: [
+                {
+                    name: 'noIndex',
+                    type: 'checkbox',
+                    admin: {
+                        description: 'Disable indexing of this page.'
+                    }
+                }
+            ]
+        })
+    ],
     collections: [
         ...(createGroup(
-            [CaseStudies, Pages, Projects],
+            [CaseStudies, Pages],
             'Templates'
         ) as CollectionConfig[]),
         ...(createGroup([Heroes], 'Sections') as CollectionConfig[]),
