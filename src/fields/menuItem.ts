@@ -39,6 +39,28 @@ export const menuItem = [
                         }
                     ) => (siblingData?.overridePageName === true ? true : false)
                 }
+            },
+            {
+                name: 'linkToSection',
+                type: 'checkbox',
+                admin: {
+                    description:
+                        'Navigate to a specific section within the selected page.'
+                }
+            },
+            {
+                name: 'sectionId',
+                type: 'text',
+                admin: {
+                    description:
+                        'Input the ID of the section you wish to link to.',
+                    condition: (
+                        data,
+                        siblingData: {
+                            linkToSection: boolean;
+                        }
+                    ) => (siblingData?.linkToSection === true ? true : false)
+                }
             }
         ]
     }
