@@ -14,8 +14,8 @@ export const SingleUse: Block = {
                     value: 'about'
                 },
                 {
-                    label: 'Project Listing',
-                    value: 'project-listing'
+                    label: 'Case Study Listing',
+                    value: 'case-study-listing'
                 },
                 {
                     label: 'Toolbox Listing',
