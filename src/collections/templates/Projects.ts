@@ -1,44 +1,45 @@
 import { CollectionConfig } from 'payload/types';
 
+import { caseStudies } from '../../fields/caseStudy';
 import { manyCtas } from '../../fields/cta';
-import { image } from '../../fields/image';
-import { richText } from '../../fields/richText';
-import { caseStudySections } from '../../fields/section';
+import { ftImage, image } from '../../fields/image';
+import { projectSections } from '../../fields/section';
 import { slug } from '../../fields/slug';
 import { title, titleAsTitle } from '../../fields/title';
 import { generateSlug } from '../../utils/generateSlug';
 
-const CaseStudies: CollectionConfig = {
-    slug: 'case-studies',
+const Projects: CollectionConfig = {
+    slug: 'projects',
     admin: {
         ...titleAsTitle,
-        defaultColumns: ['title', 'updatedAt']
+        defaultColumns: ['title', 'slug', 'updatedAt']
     },
     hooks: {
         beforeChange: [generateSlug()]
     },
     fields: [
         ...title,
-        ...slug({ description: 'Full slug will be /{project-slug}/{slug}' }),
+        ...slug({ description: 'Full slug will be /projects/{slug}' }),
+        ...ftImage,
         {
             name: 'intro',
             type: 'group',
             admin: {
                 description:
-                    'Displays in intro section, above rest of case study'
+                    'Displays in intro section, above rest of the project'
             },
             fields: [
                 {
-                    name: 'heading',
-                    type: 'text'
+                    name: 'description',
+                    type: 'textarea'
                 },
-                ...richText,
                 ...image,
                 ...manyCtas
             ]
         },
-        ...caseStudySections
+        ...projectSections,
+        ...caseStudies
     ]
 };
 
-export default CaseStudies;
+export default Projects;

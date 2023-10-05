@@ -14,7 +14,7 @@ const Pages: CollectionConfig = {
     hooks: {
         beforeChange: [generateSlug()]
     },
-    fields: [{ type: 'row', fields: [...title, ...slug({})] }, ...pageSections]
+    fields: [...title, ...slug({}), ...pageSections]
 };
 
 export default Pages;

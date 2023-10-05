@@ -11,7 +11,7 @@ const CaseStudyListing: GlobalConfig = {
         {
             name: 'caseStudies',
             type: 'relationship',
-            relationTo: 'case-studies',
+            relationTo: 'projects',
             hasMany: true
         }
     ]
