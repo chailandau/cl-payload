@@ -1,6 +1,7 @@
 import type { Block } from 'payload/types';
 
 import { richText } from '../fields/richText';
+import { sectionId } from '../fields/sectionId';
 
 export const Text: Block = {
     slug: 'textBlock',
@@ -9,6 +10,7 @@ export const Text: Block = {
             name: 'heading',
             type: 'text'
         },
-        ...richText
+        ...richText,
+        ...sectionId
     ]
 };

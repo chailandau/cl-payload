@@ -7,6 +7,7 @@ export const slug = ({ description }: { description?: string }) =>
             type: 'text',
             unique: true,
             admin: {
+                position: 'sidebar',
                 description
             }
         }
