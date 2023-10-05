@@ -10,7 +10,7 @@ import { requiredField } from '../../utils/functions';
 import { generateSlug } from '../../utils/generateSlug';
 
 const CaseStudies: CollectionConfig = {
-    slug: 'projects',
+    slug: 'case-studies',
     admin: {
         ...titleAsTitle,
         defaultColumns: ['title', 'slug', 'updatedAt']

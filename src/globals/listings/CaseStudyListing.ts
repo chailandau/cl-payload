@@ -3,18 +3,18 @@ import { GlobalConfig } from 'payload/types';
 import { icon } from '../../fields/icon';
 import { title } from '../../fields/title';
 
-const ProjectListing: GlobalConfig = {
-    slug: 'project-listing',
+const CaseStudyListing: GlobalConfig = {
+    slug: 'case-study-listing',
     fields: [
         ...title,
         ...icon,
         {
-            name: 'projects',
+            name: 'caseStudies',
             type: 'relationship',
-            relationTo: 'projects',
+            relationTo: 'case-studies',
             hasMany: true
         }
     ]
 };
 
-export default ProjectListing;
+export default CaseStudyListing;
