@@ -1,5 +1,6 @@
 import path from 'path';
 
+import seo from '@payloadcms/plugin-seo';
 import { buildConfig } from 'payload/config';
 import { CollectionConfig, GlobalConfig } from 'payload/types';
 import generateBase64 from 'payload-base64-plugin';
@@ -27,7 +28,24 @@ export default buildConfig({
         css: path.resolve(__dirname, './styles/main.scss')
     },
     serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-    plugins: [generateBase64({ removeAlpha: false })],
+    plugins: [
+        generateBase64({ removeAlpha: false }),
+        seo({
+            collections: ['projects', 'case-studies', 'pages'],
+            tabbedUI: true,
+            uploadsCollection: 'images',
+            generateURL: () => 'https://chailandau.com/',
+            fields: [
+                {
+                    name: 'noIndex',
+                    type: 'checkbox',
+                    admin: {
+                        description: 'Disable indexing of this page.'
+                    }
+                }
+            ]
+        })
+    ],
     collections: [
         ...(createGroup(
             [CaseStudies, Pages, Projects],
