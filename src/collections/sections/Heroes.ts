@@ -14,7 +14,7 @@ const Heroes: CollectionConfig = {
     },
     admin: {
         ...headingAsTitle,
-        defaultColumns: ['icon', 'heading', 'updatedAt']
+        defaultColumns: ['heading', 'icon', 'updatedAt']
     },
     fields: [
         ...icon,

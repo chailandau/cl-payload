@@ -13,6 +13,7 @@ import Tools from './collections/content/Tools';
 import { Icons } from './collections/media/Icons';
 import Images from './collections/media/Images';
 import Heroes from './collections/sections/Heroes';
+import CaseStudies from './collections/templates/CaseStudies';
 import Pages from './collections/templates/Pages';
 import Projects from './collections/templates/Projects';
 import About from './globals/About';
@@ -30,7 +31,7 @@ export default buildConfig({
     plugins: [
         generateBase64({ removeAlpha: false }),
         seo({
-            collections: ['projects', 'pages'],
+            collections: ['projects', 'case-studies', 'pages'],
             tabbedUI: true,
             uploadsCollection: 'images',
             generateURL: () => 'https://chailandau.com/',
@@ -46,7 +47,10 @@ export default buildConfig({
         })
     ],
     collections: [
-        ...(createGroup([Projects, Pages], 'Templates') as CollectionConfig[]),
+        ...(createGroup(
+            [CaseStudies, Pages, Projects],
+            'Templates'
+        ) as CollectionConfig[]),
         ...(createGroup([Heroes], 'Sections') as CollectionConfig[]),
         ...(createGroup(
             [CTA, Socials, Testimonials, Tools],

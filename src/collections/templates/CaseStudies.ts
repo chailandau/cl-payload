@@ -1,26 +1,31 @@
 import { CollectionConfig } from 'payload/types';
 
-import { caseStudies } from '../../fields/caseStudy';
 import { manyCtas } from '../../fields/cta';
 import { excerpt } from '../../fields/excerpt';
 import { ftImage, image } from '../../fields/image';
-import { projectSections } from '../../fields/section';
+import {
+    internalTitle,
+    internalTitleAsTitle
+} from '../../fields/internalTitle';
+import { richText } from '../../fields/richText';
+import { caseStudySections } from '../../fields/section';
 import { slug } from '../../fields/slug';
-import { title, titleAsTitle } from '../../fields/title';
+import { title } from '../../fields/title';
 import { generateSlug } from '../../utils/generateSlug';
 
-const Projects: CollectionConfig = {
-    slug: 'projects',
+const CaseStudies: CollectionConfig = {
+    slug: 'case-studies',
     admin: {
-        ...titleAsTitle,
+        ...internalTitleAsTitle,
         defaultColumns: ['title', 'featuredImage', 'slug', 'updatedAt']
     },
     hooks: {
         beforeChange: [generateSlug()]
     },
     fields: [
+        ...internalTitle,
         ...title,
-        ...slug({ description: 'Full slug will be /projects/{slug}' }),
+        ...slug({ description: 'Full slug will be /{project-slug}/{slug}' }),
         ...excerpt,
         ...ftImage,
         {
@@ -28,20 +33,20 @@ const Projects: CollectionConfig = {
             type: 'group',
             admin: {
                 description:
-                    'Displays in intro section, above rest of the project'
+                    'Displays in intro section, above rest of case study'
             },
             fields: [
                 {
-                    name: 'description',
-                    type: 'textarea'
+                    name: 'heading',
+                    type: 'text'
                 },
+                ...richText,
                 ...image,
                 ...manyCtas
             ]
         },
-        ...projectSections,
-        ...caseStudies
+        ...caseStudySections
     ]
 };
 
-export default Projects;
+export default CaseStudies;
