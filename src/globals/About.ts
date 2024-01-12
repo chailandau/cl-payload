@@ -19,7 +19,8 @@ const About: GlobalConfig = {
             fields: [
                 ...petImage('harvey'),
                 ...petImage('athena'),
-                ...petImage('warren')
+                ...petImage('warren'),
+                ...petImage('jasper')
             ]
         }
     ]

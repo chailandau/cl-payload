@@ -30,15 +30,20 @@ export interface Config {
 }
 export interface CaseStudy {
   id: string;
+  internalTitle?: string;
   title?: string;
   slug?: string;
-  project: string | Project;
+  excerpt?: string;
+  featuredImage?: string | Image;
   intro?: {
     heading?: string;
-    description?: string;
+    text?: {
+      [k: string]: unknown;
+    }[];
     image?: string | Image;
+    cta?: string[] | Cta[];
   };
-  projectSections?: (
+  caseStudySections?: (
     | {
         image?: string | Image;
         id?: string;
@@ -55,104 +60,19 @@ export interface CaseStudy {
         blockType: 'textBlock';
       }
   )[];
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Project {
-  id: string;
-  title?: string;
-  slug?: string;
-  intro?: {
+  meta?: {
+    title?: string;
     description?: string;
     image?: string | Image;
+    noIndex?: boolean;
   };
-  projectSections?: (
-    | {
-        image?: string | Image;
-        id?: string;
-        blockName?: string;
-        blockType: 'imageBlock';
-      }
-    | {
-        heading?: string;
-        text?: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'textBlock';
-      }
-  )[];
   updatedAt: string;
   createdAt: string;
 }
 export interface Image {
   id: string;
   alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
-  sizes?: {
-    thumbnail?: {
-      url?: string;
-      width?: number;
-      height?: number;
-      mimeType?: string;
-      filesize?: number;
-      filename?: string;
-    };
-  };
-}
-export interface Page {
-  id: string;
-  title?: string;
-  slug?: string;
-  pageSections?: (
-    | {
-        hero?: string | Hero;
-        id?: string;
-        blockName?: string;
-        blockType: 'heroBlock';
-      }
-    | {
-        singleUse?: 'about' | 'case-study-listing' | 'toolbox-listing' | 'testimonial-listing';
-        id?: string;
-        blockName?: string;
-        blockType: 'singleUseBlock';
-      }
-    | {
-        socials?: string[] | Social[];
-        id?: string;
-        blockName?: string;
-        blockType: 'socialsBlock';
-      }
-  )[];
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Hero {
-  id: string;
-  icon?: string | Icon;
-  heading: string;
-  headingTag: string;
-  coloredSubhead?: {
-    [k: string]: unknown;
-  }[];
-  subhead?: string;
-  homepage?: boolean;
-  doodles?: boolean;
-  cta?: string | Cta;
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Icon {
-  id: string;
-  alt: string;
+  base64?: string;
   updatedAt: string;
   createdAt: string;
   url?: string;
@@ -182,11 +102,123 @@ export interface Cta {
   updatedAt: string;
   createdAt: string;
 }
+export interface Page {
+  id: string;
+  title?: string;
+  slug?: string;
+  pageSections?: (
+    | {
+        hero?: string | Hero;
+        sectionId?: string;
+        id?: string;
+        blockName?: string;
+        blockType: 'heroBlock';
+      }
+    | {
+        singleUse?: 'about' | 'case-study-listing' | 'toolbox-listing' | 'testimonial-listing';
+        sectionId?: string;
+        id?: string;
+        blockName?: string;
+        blockType: 'singleUseBlock';
+      }
+    | {
+        socials?: string[] | Social[];
+        sectionId?: string;
+        id?: string;
+        blockName?: string;
+        blockType: 'socialsBlock';
+      }
+  )[];
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string | Image;
+    noIndex?: boolean;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Hero {
+  id: string;
+  icon?: string | Icon;
+  heading: string;
+  headingTag: string;
+  coloredSubhead?: {
+    [k: string]: unknown;
+  }[];
+  subhead?: string;
+  homepage?: boolean;
+  doodles?: boolean;
+  cta?: string | Cta;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Icon {
+  id: string;
+  alt: string;
+  base64?: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes?: {
+    thumbnail?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
+}
 export interface Social {
   id: string;
   icon: string | Icon;
   label: string;
   socialLink?: string;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Project {
+  id: string;
+  title?: string;
+  slug?: string;
+  excerpt?: string;
+  featuredImage?: string | Image;
+  intro?: {
+    description?: string;
+    image?: string | Image;
+    cta?: string[] | Cta[];
+  };
+  projectSections?: (
+    | {
+        image?: string | Image;
+        id?: string;
+        blockName?: string;
+        blockType: 'imageBlock';
+      }
+    | {
+        heading?: string;
+        text?: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'textBlock';
+      }
+  )[];
+  caseStudies?: string[] | CaseStudy[];
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string | Image;
+    noIndex?: boolean;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -241,6 +273,7 @@ export interface About {
     harvey?: string | Image;
     athena?: string | Image;
     warren?: string | Image;
+    jasper?: string | Image;
   };
   updatedAt?: string;
   createdAt?: string;
@@ -251,6 +284,8 @@ export interface Nav {
     page?: string | Page;
     overridePageName?: boolean;
     customLabel?: string;
+    linkToSection?: boolean;
+    sectionId?: string;
     id?: string;
   }[];
   footerCopyrightText?: string;
@@ -261,6 +296,7 @@ export interface CaseStudyListing {
   id: string;
   title?: string;
   icon?: string | Icon;
+  caseStudies?: string[] | Project[];
   updatedAt?: string;
   createdAt?: string;
 }
